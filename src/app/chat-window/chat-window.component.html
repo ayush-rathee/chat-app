@@ -1,0 +1,43 @@
+<div class="text-center">
+    <h2>Chat App</h2>
+</div>
+<div class="main text-center">
+    <div class="name">
+      <input type="text" id="name-input" class="name-input" [(ngModel)]="senderName" (ngModelChange)="updateSenderToService($event)" value="anonymous"/>
+    </div>
+
+    <ul class="message-container" id="message-container" >
+      <!-- These li elements are only for reference, and therefore, they are commented out... -->
+       <!-- <li class="message-right">
+        <p class="message">
+          lorem impsun
+          <span>bluebird ● 26 July 10:40</span>
+        </p>
+      </li> -->
+      <li *ngFor="let message of messages" [ngClass]="{'message-left': message.areYouSender, 'message-right': !message.areYouSender}">
+        <p class="message">
+          {{message.text}}
+          <span>{{message.sender}} ● {{message.time}}</span>
+          <span>Are You Sender: {{message.areYouSender}}</span>
+        </p>
+      </li>
+    <!-- <ng-template #recievedMsg>
+      <li *ngFor="let message of messages" class="message-right">
+        <p class="message">
+          {{message.text}}
+          <span>{{message.sender}} ● {{message.time}}</span>
+        </p>
+      </li>
+    </ng-template> -->
+      
+
+    </ul>
+  </div>
+  <div>
+    <app-chat-textbox></app-chat-textbox>
+  </div>
+<div class="text-center">
+    <p id="connectedClient">Total Connected client: {{totalconnectedClient}}</p>
+</div>
+
+  
